@@ -142,20 +142,19 @@ Those who choose not to write tests will typically be reliant on manual testing.
 - Documentation for humans as to how the system should behave
 - Much faster and more reliable feedback than manual testing
 
-#### An example in Go
+#### An example in C#
 
-A unit test for our `Hello` function could look like this
+A unit test for our `Greet` function could look like this
 
-    func TestHelloWorld() {
-      got := Hello(“Chris”, es)
-      want := "Hola, Chris"
-    
-      if got != want {
-         t.Errorf("got %q want %q", got, want)
-      }
+    public void it_greets_with_a_person()
+    {
+        var expected = "Hello, Wes";
+        var actual = HelloWorld.Greet("en", "Wes");
+
+        actual.Should().Be(expected);
     }
 
-At the command line we can run `dotnet test` and get immediate feedback as to whether my refactoring efforts have altered behavior. In practice it's best to learn the magic button to run your tests within your editor/IDE. 
+At the command line we can run `dotnet test` and get immediate feedback as to whether my refactoring efforts have altered behavior.  
 
 You want to get in to a state where you are doing 
 
