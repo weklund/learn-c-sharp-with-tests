@@ -4,7 +4,7 @@ _heavily_ influenced by the great work [Chris James (@quii)](https://github.com/
 
 ## Why
 
-* Explore C# language by writing tests
+* Explore C# by writing tests
 * **Get a grounding with TDD**. 
 * Be confident that you'll be able to start writing robust, well-tested systems in C#
 * [Watch a video, or read about why unit testing and TDD is important](why.md)
@@ -16,6 +16,7 @@ _heavily_ influenced by the great work [Chris James (@quii)](https://github.com/
 1. [Install dotnet](install-dotnet.md) - Set up environment for productivity.
 2. [Hello, world](hello-world.md) - Declaring variables, constants, if/else statements, switch, write your first C# program and write your first test. Namespaces and the using directive.
 3. [Integers](integers.md) - Further Explore function declaration syntax.
+
 *More coming soon!*
 
 ## Contributing
@@ -32,9 +33,9 @@ I have experience introducing testing to development teams and have tried differ
 
 When learning new languages, I like to play around in a scripting environment to pick up the syntax, but don't want to start a _pet project_ just to learn another language
 
-What I like to do is explore concepts and then solidify the ideas with tests. Tests verify the code I write is correct and documents the feature I have learned.
+I like to do is explore concepts and then solidify the ideas with tests. Tests verify the code I write is correct and documents the feature I have learned.
 
-Taking my experience of learning with a group and my own personal way I am going to try and create something that hopefully proves useful to other teams. Learning the fundamentals by writing small tests so that you can then take your existing software design skills and ship some great systems.
+Taking my experience of learning with a group and my own personal way I am going to try and create something that hopefully proves useful to other teams. Learning the fundamentals by writing small tests with quick feedback loops so that you can then take your existing software design skills and ship some great systems.
 
 ## Who this is for
 

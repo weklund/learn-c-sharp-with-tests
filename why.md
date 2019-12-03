@@ -81,46 +81,50 @@ When you refactor your code, you are trying to find ways of making your code eas
 
 Here is a function which greets `name` in a particular `language`
 
-    public static string Hello(string name, string language) 
+```c#
+public static string Hello(string name, string language) 
+{
+    if (language == "es")
     {
-        if (language == "es")
-        {
-            return "Hola, " + name;
-        }
-            
-        if (language == "fr")
-        {
-            return "Bonjour, " + name;
-        }
-            
-        // imagine dozens more languages
-
-        return "Hello, " + name;
+        return "Hola, " + name;
     }
+        
+    if (language == "fr")
+    {
+        return "Bonjour, " + name;
+    }
+        
+    // imagine dozens more languages
+
+    return "Hello, " + name;
+}
+```
+
 
 Having dozens of `if` statements doesn't feel good and we have a duplication of concatenating a language specific greeting with `, ` and the `name.` So let's refactor the code.
 
-    public Dictionary<string, string> greetings = new Dictionary<string, string>
-    {
-        ["es"] = "Hola",
-        ["fr"] = "Bonjour"
-    };
-    
-    public string Greeting(string language) 
-    {
-        if (greetings.ContainsKey(language))
-        {
-            return greetings[language];
-        }
+```c#
+public Dictionary<string, string> greetings = new Dictionary<string, string>
+{
+    ["es"] = "Hola",
+    ["fr"] = "Bonjour"
+};
 
-        return "Hello";
-    }
-    
-    public string Hello(string name, string language)
+public string Greeting(string language) 
+{
+    if (greetings.ContainsKey(language))
     {
-        return $"{Greeting(language)}, {name}";
+        return greetings[language];
     }
-  
+
+    return "Hello";
+}
+
+public string Hello(string name, string language)
+{
+    return $"{Greeting(language)}, {name}";
+}
+```
 
 The nature of this refactor isn't actually important, what's important is we haven't changed behavior. 
 
@@ -154,7 +158,7 @@ A unit test for our `Greet` function could look like this
         actual.Should().Be(expected);
     }
 
-At the command line we can run `dotnet test` and get immediate feedback as to whether my refactoring efforts have altered behavior.  
+At the command line we can run `dotnet test` and get immediate feedback as to whether the refactoring efforts have altered behavior.  
 
 You want to get in to a state where you are doing 
 
@@ -164,7 +168,7 @@ You want to get in to a state where you are doing
 
 All within a very tight feedback loop so you don't go down rabbit holes and make mistakes.
 
-Having a project where all your key behaviours are unit tested and give you feedback well under a second is a very empowering safety net to do bold refactoring when you need to. This helps us manage the incoming force of complexity that Lehman describes.
+Having a project where all your key behaviors are unit tested and give you feedback well under a second is a very empowering safety net to do bold refactoring when you need to. This helps us manage the incoming force of complexity that Lehman describes.
 
 ## If unit tests are so great, why is there sometimes resistance to writing them?
 
@@ -188,17 +192,17 @@ A few weeks later The Law of Continuous Change strikes our system and a new deve
 
 ![Two rectangles to form a square](https://i.imgur.com/1G6rYqD.jpg)
 
-She tries to do this refactor and gets mixed signals from a number of failing tests. Has she actually broken important behaviours here? She now has to dig through these triangle tests and try and understand what's going on. 
+She tries to do this refactor and gets mixed signals from a number of failing tests. Has she actually broken important behaviors here? She now has to dig through these triangle tests and try and understand what's going on. 
 
 _It's not actually important that the square was formed out of triangles_ but **our tests have falsely elevated the importance of our implementation details**. 
 
-## Favour testing behaviour rather than implementation detail
+## Favor testing behavior rather than implementation detail
 
 When folks are complaining about unit tests it is often because the tests are at the wrong abstraction level. They're testing implementation details, overly spying on collaborators and mocking too much. 
 
 It stems from a misunderstanding of what unit tests are and chasing vanity metrics (test coverage). 
 
-If we're saying just test behaviour, should we not just only write system/black-box tests? These kind of tests do have lots of value in terms of verifying key user journeys but they are typically expensive to write and slow to run. For that reason they're not too helpful for _refactoring_ because the feedback loop is slow. In addition black box tests don't tend to help you very much with root causes compared to unit tests. 
+If we're saying just test behavior, should we not just only write system/black-box tests? These kind of tests do have lots of value in terms of verifying key user journeys but they are typically expensive to write and slow to run. For that reason they're not too helpful for _refactoring_ because the feedback loop is slow. In addition black box tests don't tend to help you very much with root causes compared to unit tests. 
 
 So what _is_ the right abstraction level?
 
@@ -208,9 +212,9 @@ Forgetting about tests for a moment, it is desirable to have within your system 
 
 Imagine these units as simple Lego bricks which have coherent APIs that we can combine with other bricks to make bigger systems. Underneath these APIs there could be dozens of things (types, functions et al) collaborating to make them work how they need to.
 
-For instance if you were writing a bank in Go, you might have an "account" package. It will present an API that does not leak implementation detail and is easy to integrate with.
+For instance if you were writing a bank in C#, you might have an "account" package. It will present an API that does not leak implementation detail and is easy to integrate with.
 
-If you have these units that follow these properties you can write unit tests against their public APIs. _By definition_ these tests can only be testing useful behaviour. Underneath these units we are free to refactor the implementation as much as we need to and the tests for the most part should not get in the way.
+If you have these units that follow these properties you can write unit tests against their public APIs. _By definition_ these tests can only be testing useful behavior. Underneath these units we are free to refactor the implementation as much as we need to and the tests for the most part should not get in the way.
 
 ### Are these unit tests?
 
@@ -255,7 +259,7 @@ TDD addresses the laws that Lehman talks about and other lessons hard learned th
 
 ### Small steps
 
-- Write a small test for a small amount of desired behaviour
+- Write a small test for a small amount of desired behavior
 - Check the test fails with a clear error (red)
 - Write the minimal amount of code to make the test pass (green)
 - Refactor
@@ -270,8 +274,8 @@ You'll always be driving small & useful functionality comfortably backed by the 
 ## Wrapping up 
 
 - The strength of software is that we can change it. _Most_ software will require change over time in unpredictable ways; but don't try and over-engineer because it's too hard to predict the future.
-- Instead we need to make it so we can keep our software malleable. In order to change software we have to refactor it as it evolves or it will turn into a mess
-- A good test suite can help you refactor quicker and in a less stressful manner
+- Instead we need to make it so we can keep our software malleable. In order to change software we have to refactor it as it evolves or it will turn into a mess.
+- A good test suite can help you refactor quicker and in a less stressful manner.
 - Writing good unit tests is a design problem so think about structuring your code so you have meaningful units that you can integrate together like Lego bricks.
 - TDD can help and force you to design well factored software iteratively, backed by tests to help future work as it arrives.
 
