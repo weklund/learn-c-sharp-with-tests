@@ -16,6 +16,7 @@ _heavily_ influenced by the great work [Chris James (@quii)](https://github.com/
 1. [Install dotnet](install-dotnet.md) - Set up environment for productivity.
 2. [Hello, world](hello-world.md) - Declaring variables, constants, if/else statements, switch, write your first C# program and write your first test. Namespaces and the using directive.
 3. [Integers](integers.md) - Further Explore function declaration syntax.
+4. [Iteration](iteration.md) - Learn about loops `for`  
 
 *More coming soon!*
 
