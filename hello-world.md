@@ -13,10 +13,10 @@ namespace LearnCSharp
 {
     public static class HelloWorld
     {
-    
+
         private static void Main()
         {
-            
+
         }
     }
 }
@@ -30,7 +30,7 @@ C# uses namespaces to help organize your code and the various classes you write.
 
 ```c#
 namespace LearnCSharp
-```  
+```
 
 In this project in particular, we have separated out the chapters you'll be doing from the solutions.
 
@@ -42,7 +42,7 @@ namespace LearnCSharp.Solutions
 
 ## Classes
 
-When you write a program in C#, you use classes as a basic building block for your code.  A class will contain variables (fields) and methods that relate to a single logical unit. 
+When you write a program in C#, you use classes as a basic building block for your code.  A class will contain variables (fields) and methods that relate to a single logical unit.
 
 ```c#
 public static class HelloWorld
@@ -55,12 +55,12 @@ Here we are a creating a `HelloWorld` class that is `public`, which means that o
 
 ## Methods
 
-Methods(or functions) are just code blocks with various code statements in it.  Everything you do will be writing functions to do certain things in code.  In C# projects, the `Main()` function is normally an entrypoint, or the first function that gets called by the project. 
+Methods(or functions) are just code blocks with various code statements in it.  Everything you do will be writing functions to do certain things in code.  In C# projects, the `Main()` function is normally an entrypoint, or the first function that gets called by the project.
 
 ```c#
 public static void Main()
 {
-    
+
 }
 ```
 
@@ -73,7 +73,7 @@ namespace LearnCSharp
 {
     public static class HelloWorld
     {
-    
+
         public static void Main()
         {
             Console.WriteLine("Hello, World");
@@ -92,7 +92,7 @@ You've just written your first program!  Congrats!  :tada:
 
 ## Using directive
 
-When we need to reference other classes, libraries, or packages, we use the `using` directive to bring them into our file.  
+When we need to reference other classes, libraries, or packages, we use the `using` directive to bring them into our file.
 
 In this case, we need to bring in `System` so we can use the Console class and print to the terminal.
 
@@ -113,7 +113,7 @@ namespace LearnCSharp
         {
             return "Hello, World";
         }
-    
+
         public static void Main()
         {
             Console.WriteLine(Greet());
@@ -179,17 +179,17 @@ public void it_greets()
 Now run `dotnet test -v q --filter "HelloWorldTests&Category=Exercise" /nologo`, you should have a compilation error
 
 ```text
-HelloWorldTests.cs(14,37): error CS1501: No overload for method 'Hello' takes 1 arguments 
+HelloWorldTests.cs(14,37): error CS1501: No overload for method 'Hello' takes 1 arguments
 ```
 
-Reading and understanding compiler errors is really helpful in figuring out what's wrong with your program.  With just a bit of practice you'll pick up on what these errors are telling you. 
+Reading and understanding compiler errors is really helpful in figuring out what's wrong with your program.  With just a bit of practice you'll pick up on what these errors are telling you.
 
 In this case the compiler is telling you what you need to do to continue. We have to change our function `Greet` to accept an argument.
 
 Edit the `Hello` function to accept an argument of type string
 
 ```c#
-public static string Hello(string name)
+public static string Greet(string name)
 {
     return "Hello, World";
 }
@@ -200,7 +200,7 @@ If you try and run your tests again it will fail to compile because you're not p
 ```c#
 public static void Main()
 {
-    Console.WriteLine(Hello("World"));
+    Console.WriteLine(Greet("World"));
 }
 ```
 
@@ -213,12 +213,12 @@ dotnet test --filter "HelloWorldTests&Category=Exercise" /nologo
 Here's what we see now
 
 ```text
-[xUnit.net 00:00:01.10]     WithTests.HelloWorldTests.it_greets [FAIL]   
-                                                                                                                            
+[xUnit.net 00:00:01.10]     WithTests.HelloWorldTests.it_greets [FAIL]
+
 X WithTests.HelloWorldTests.it_greets [174ms]
   Error Message:
-   Expected actual to be 
-"Hello, Wes", but 
+   Expected actual to be
+"Hello, Wes", but
 "Hello, World" differs near "Wor" (index 7).
 ```
 
@@ -227,7 +227,7 @@ We finally have a compiling program but it is not meeting our requirements accor
 Let's make the test pass by using the name argument and concatenate it with `Hello,`
 
 ```c#
-public static string Hello(string name)
+public static string Greet(string name)
 {
     return "Hello, " + name;
 }
@@ -294,9 +294,9 @@ Now let's fix the code, with a `if`
 public static string Greet(string name)
 {
     if (name == ""){
-        return $"{EnglishGreetPrefix}, World";    
+        return $"{EnglishGreetPrefix}, World";
     }
-    
+
     return $"{EnglishGreetPrefix}, {name}";
 }
 ```
@@ -360,9 +360,9 @@ Fix the compilation problems by adding another string argument to `Greet`
 public static string Greet(string name, string language)
 {
     if (name == ""){
-        return $"{EnglishGreetPrefix}, World";    
+        return $"{EnglishGreetPrefix}, World";
     }
-    
+
     return $"{EnglishGreetPrefix}, {name}";
 }
 ```
@@ -371,16 +371,16 @@ When you try to run the tests again it will complain about not passing enough ar
 
 ```text
 HelloWorld.cs(20,31): error CS7036: There is no argument given that corresponds to the required formal parameter 'language' of 'HelloWorld.Greet(string, string)'
-``` 
+```
 
 Fix them by passing through empty strings. Now all your tests should compile _and_ pass, apart from our new scenario
 
 ```text
-[xUnit.net 00:00:00.98]     WithTests.HelloWorldTests.it_greets_in_spanish [FAIL]                                                                                                                                                                                                          
-  X WithTests.HelloWorldTests.it_greets_in_spanish [172ms]                                                                                                                                                                                                                                 
+[xUnit.net 00:00:00.98]     WithTests.HelloWorldTests.it_greets_in_spanish [FAIL]
+  X WithTests.HelloWorldTests.it_greets_in_spanish [172ms]
   Error Message:
-   Expected actual to be 
-"Hola, Roberto" with a length of 13, but 
+   Expected actual to be
+"Hola, Roberto" with a length of 13, but
 "Hello, Roberto" has a length of 14, differs near "ell" (index 1).
   Stack Trace:
      at FluentAssertions.Execution.XUnit2TestFramework.Throw(String message) in C:\projects\fluentassertions-vf06b\Src\FluentAssertions\Execution\XUnit2TestFramework.cs:line 32
@@ -389,7 +389,7 @@ Fix them by passing through empty strings. Now all your tests should compile _an
    at FluentAssertions.Primitives.StringValidator.Validate() in C:\projects\fluentassertions-vf06b\Src\FluentAssertions\Primitives\StringValidator.cs:line 41
    at FluentAssertions.Primitives.StringAssertions.Be(String expected, String because, Object[] becauseArgs) in C:\projects\fluentassertions-vf06b\Src\FluentAssertions\Primitives\StringAssertions.cs:line 41
    at WithTests.HelloWorldTests.it_greets_in_spanish() in /Users/weseklund/Projects/c-sharp/LearnCSharpWithTests/WithTests/HelloWorldTests.cs:line 36
-                                                                                                                                                                                                                                                                                           
+
 Test Run Failed.
 Total tests: 3
      Passed: 2
@@ -402,13 +402,13 @@ We can use `if` here to check the language is equal to "Spanish" and if so chang
 public static string Greet(string name, string language)
 {
     if (name == ""){
-        return $"{EnglishGreetPrefix}, World";    
+        return $"{EnglishGreetPrefix}, World";
     }
-    
+
     if (language == "Spanish") {
         return "Hola, " + name;
     }
-    
+
     return $"{EnglishGreetPrefix}, {name}";
 }
 ```
@@ -425,13 +425,13 @@ private const string Spanish = "Spanish";
 public static string Greet(string name, string language)
 {
     if (name == ""){
-        return $"{EnglishGreetPrefix}, World";    
+        return $"{EnglishGreetPrefix}, World";
     }
-    
+
     if (language == Spanish) {
         return $"{SpanishGreetPrefix}, {name}";
     }
-    
+
     return $"{EnglishGreetPrefix}, {name}";
 }
 ```
@@ -454,17 +454,17 @@ private const string French = "French";
 public static string Greet(string name, string language)
 {
     if (name == ""){
-        return $"{EnglishGreetPrefix}, World";    
+        return $"{EnglishGreetPrefix}, World";
     }
-    
+
     if (language == Spanish) {
         return $"{SpanishGreetPrefix}, {name}";
     }
-    
+
     if (language == French) {
         return $"{FrenchGreetPrefix}, {name}";
     }
-    
+
     return $"{EnglishGreetPrefix}, {name}";
 }
 ```
@@ -477,20 +477,20 @@ When you have lots of `if` statements checking a particular value it is common t
 public static string Greet(string name, string language)
 {
     if (name == ""){
-        return $"{EnglishGreetPrefix}, World";    
+        return $"{EnglishGreetPrefix}, World";
     }
-    
+
     var prefix = EnglishGreetPrefix;
-    
+
     switch (language) {
         case Spanish:
             prefix = SpanishGreetPrefix;
             break;
         case French:
             prefix = FrenchGreetPrefix;
-            break;      
+            break;
     }
-    
+
     return $"{prefix}, {name}";
 }
 ```
@@ -503,12 +503,12 @@ You could argue that maybe our function is getting a little big. The simplest re
 
 ```c#
 public static string GreetingPrefix(string language)
-{    
+{
     switch (language) {
         case Spanish:
             return SpanishGreetPrefix;
         case French:
-            return FrenchGreetPrefix;    
+            return FrenchGreetPrefix;
         default:
             return EnglishGreetPrefix;
     }
@@ -517,9 +517,9 @@ public static string GreetingPrefix(string language)
 public static string Greet(string name, string language)
 {
     if (name == ""){
-        return $"{EnglishGreetPrefix}, World";    
+        return $"{EnglishGreetPrefix}, World";
     }
-    
+
     return $"{GreetingPrefix(language)}, {name}";
 }
 ```
