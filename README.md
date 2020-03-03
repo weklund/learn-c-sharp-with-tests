@@ -5,7 +5,7 @@ _heavily_ influenced by the great work [Chris James (@quii)](https://github.com/
 ## Why
 
 * Explore C# by writing tests
-* **Get a grounding with TDD**. 
+* **Get a grounding with TDD**.
 * Be confident that you'll be able to start writing robust, well-tested systems in C#
 * [Watch a video, or read about why unit testing and TDD is important](why.md)
 
@@ -18,6 +18,19 @@ _heavily_ influenced by the great work [Chris James (@quii)](https://github.com/
 3. [Integers](integers.md) - Further explore function declaration syntax.
 4. [Iteration](iteration.md) - Learn about loops `for`
 5. [Arrays](arrays.md) - Learn about arrays,`foreach`, params, and array slicing
+6. [Classes](classes.md) - Learn about classes, objects, and inheriting
+
+Soon
+
+* [Lambdas](#) - Learn about Lambda expressions (anonymous functions) and code coverage
+* [Interfaces](#) - Learn about interfaces and mocking
+* [Dependency Injection](#) - Learn about Dependency Injection
+
+### Applications (soon)
+
+* [Web Server](#) - Learn about creating a HTTP Server
+* [Database access](#) - Learn about reading and writing to a database with SQLite
+* [WebSockets](#) - Learn how to reading and writing to a server with WebSockets
 
 
 *More coming soon!*

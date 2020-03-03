@@ -1,7 +1,7 @@
  # Arrays and Lists
- 
+
  **[You can find the completed code for this chapter here](https://github.com/weklund/learn-c-sharp-with-tests/tree/master/LearnCSharp/Solutions/Sum.cs)**
- 
+
  **[and the completed tests for this chapter here](https://github.com/weklund/learn-c-sharp-with-tests/tree/master/WithTests/Solutions/SumTests.cs)**
 
 Arrays allow you to store multiple elements of the same type in a variable in
@@ -23,7 +23,7 @@ In `/WithTests/SumTests.cs`
 public void it_sums_any_size()
 {
     var numbers = new[] {1, 2, 3};
-    
+
     var expected = 6;
     var actual = Sum.Add(numbers);
 
@@ -55,8 +55,8 @@ public static int Add(int[] numbers)
 Your test should now fail with _a clear error message_
 
 ```text
-[xUnit.net 00:00:00.83]     WithTests.SumTests.it_sums_any_size [FAIL]                                                                                                                                                                                                          
-  X WithTests.SumTests.it_sums_any_size [120ms]                                                                                                                                                                                                                                 
+[xUnit.net 00:00:00.83]     WithTests.SumTests.it_sums_any_size [FAIL]
+  X WithTests.SumTests.it_sums_any_size [120ms]
   Error Message:
    Expected actual to be 6, but found 0.
   Stack Trace:
@@ -68,7 +68,7 @@ Your test should now fail with _a clear error message_
    at FluentAssertions.Execution.AssertionScope.FailWith(String message, Object[] args)
    at FluentAssertions.Numeric.NumericAssertions`1.Be(T expected, String because, Object[] becauseArgs)
    at WithTests.SumTests.it_sums_any_size() in /Users/weseklund/Projects/c-sharp/LearnCSharpWithTests/WithTests/SumTests.cs:line 18
-                                                                                                                                                                                                                                                                                
+
 Test Run Failed.
 Total tests: 1
      Failed: 1
@@ -158,8 +158,8 @@ public static int[] AddTails(params int[][] numbers)
 ```
 
 ```text
-[xUnit.net 00:00:01.05]     WithTests.SumTests.it_sums_tails [FAIL]                                                                                                                                                                                                             
-  X WithTests.SumTests.it_sums_tails [268ms]                                                                                                                                                                                                                                    
+[xUnit.net 00:00:01.05]     WithTests.SumTests.it_sums_tails [FAIL]
+  X WithTests.SumTests.it_sums_tails [268ms]
   Error Message:
    Expected actual to be equal to {2, 9}, but {0, 0} differs at index 0.
   Stack Trace:
@@ -175,7 +175,7 @@ public static int[] AddTails(params int[][] numbers)
    at FluentAssertions.Collections.CollectionAssertions`2.AssertSubjectEquality[TActual,TExpected](IEnumerable expectation, Func`3 equalityComparison, String because, Object[] becauseArgs)
    at FluentAssertions.Collections.SelfReferencingCollectionAssertions`2.Equal(T[] elements)
    at WithTests.SumTests.it_sums_tails() in /Users/weseklund/Projects/c-sharp/LearnCSharpWithTests/WithTests/SumTests.cs:line 31
-                                                                                                                                                                                                                                                                                
+
 Test Run Failed.
 Total tests: 2
      Passed: 1
@@ -229,7 +229,7 @@ Slicing is an easy way to fetch certain elements in an array without needing to 
 
 Not a lot to refactor this time.
 
-What do you think would happen if you passed in an empty array into our function? What is the "tail" of an empty array? 
+What do you think would happen if you passed in an empty array into our function? What is the "tail" of an empty array?
 
 ## Write the test first
 
@@ -251,15 +251,15 @@ public void it_sums_empty_collection()
 ## Try to run the test
 
 ```text
-[xUnit.net 00:00:00.76]     WithTests.SumTests.it_sums_empty_collections [FAIL]                                                                                                                                                                                                            
-  X WithTests.SumTests.it_sums_empty_collections [2ms]                                                                                                                                                                                                                                     
+[xUnit.net 00:00:00.76]     WithTests.SumTests.it_sums_empty_collections [FAIL]
+  X WithTests.SumTests.it_sums_empty_collections [2ms]
   Error Message:
    System.ArgumentOutOfRangeException : Specified argument was out of the range of valid values. (Parameter 'length')
   Stack Trace:
      at System.Runtime.CompilerServices.RuntimeHelpers.GetSubArray[T](T[] array, Range range)
    at LearnCSharp.Sum.AddTails(Int32[][] numbers) in /Users/weseklund/Projects/c-sharp/LearnCSharpWithTests/LearnCSharp/Sum.cs:line 22
    at WithTests.SumTests.it_sums_empty_collections() in /Users/weseklund/Projects/c-sharp/LearnCSharpWithTests/WithTests/SumTests.cs:line 39
-                                                                                                                                                                                                                                                                                           
+
 Test Run Failed.
 Total tests: 3
      Passed: 2
@@ -284,7 +284,7 @@ public static int[] AddTails(params int[][] numbers)
         else
         {
             var tail = numbers[i][1..];
-            sums[i] = Add(tail);   
+            sums[i] = Add(tail);
         }
     }
 
@@ -301,6 +301,7 @@ We have covered
 * FluentAssertions `Be()` vs `Equal()`
 * `params`
 * Slicing
+* `IEnumerable<>`
 
 
 
