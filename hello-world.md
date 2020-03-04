@@ -428,7 +428,7 @@ public static string Greet(string name, string language)
         return $"{EnglishGreetPrefix}, World";
     }
 
-    if (language == Spanish) {
+    if (language == "Spanish") {
         return $"{SpanishGreetPrefix}, {name}";
     }
 
