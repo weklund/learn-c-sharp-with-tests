@@ -457,11 +457,11 @@ public static string Greet(string name, string language)
         return $"{EnglishGreetPrefix}, World";
     }
 
-    if (language == Spanish) {
+    if (language == "Spanish") {
         return $"{SpanishGreetPrefix}, {name}";
     }
 
-    if (language == French) {
+    if (language == "French") {
         return $"{FrenchGreetPrefix}, {name}";
     }
 
@@ -483,10 +483,10 @@ public static string Greet(string name, string language)
     var prefix = EnglishGreetPrefix;
 
     switch (language) {
-        case Spanish:
+        case "Spanish":
             prefix = SpanishGreetPrefix;
             break;
-        case French:
+        case "French":
             prefix = FrenchGreetPrefix;
             break;
     }
@@ -505,9 +505,9 @@ You could argue that maybe our function is getting a little big. The simplest re
 public static string GreetingPrefix(string language)
 {
     switch (language) {
-        case Spanish:
+        case "Spanish":
             return SpanishGreetPrefix;
-        case French:
+        case "French":
             return FrenchGreetPrefix;
         default:
             return EnglishGreetPrefix;
