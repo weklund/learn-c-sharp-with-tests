@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace LearnCSharp.Solutions
 {
@@ -30,7 +28,7 @@ namespace LearnCSharp.Solutions
                 else
                 {
                     var tail = numbers[i][1..];
-                    sums[i] = Add(tail);   
+                    sums[i] = Add(tail);
                 }
             }
 
